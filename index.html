@@ -53,6 +53,15 @@
     <!--[if lt IE 9]>
     <script src="js/respond.min.js"></script>
     <![endif]-->
+    <style>
+        .filterDiv {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <div id="colorlib-page">
@@ -463,17 +472,18 @@
                         <div class="row row-bottom-padded-sm animate-box" data-animate-effect="fadeInLeft">
                                 <div class="col-md-12" id="myBtnContainer">
                                 <p class="work-menu">
-                                    <span><a href="#">Cafe&Restaurant</a></span> 
-                                    <span><a href="#">Ofis</a></span> 
-                                    <span><a href="#">Ev</a></span> 
-                                    <span><a href="#">Otel</a></span>
+                                    <span><a onclick="filterSelection('all')" class="active">Hepsi</a></span>
+                                    <span onclick="filterSelection('cafe')"><a>Cafe&Restaurant</a></span> 
+                                    <span onclick="filterSelection('ofis')"><a>Ofis</a></span> 
+                                    <span onclick="filterSelection('ev')"><a>Ev</a></span> 
+                                    <span onclick="filterSelection('otel')"><a>Otel</a></span>
                                 </p>
                             </div>
                             
 
                         </div>
                         <div class="row">
-                            <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+                            <div class="col-md-6 animate-box filterDiv cafe" data-animate-effect="fadeInLeft">
                                 <div class="project" style="background-image: url(gallery_page/thumber/images/caferestaurant/besiktascafe/1.jpg);">
                                     <div class="desc">
                                         <div class="con">
@@ -494,7 +504,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
+                            <div class="col-md-6 animate-box filterDiv ev" data-animate-effect="fadeInRight">
                                 <div class="project" style="background-image: url(gallery_page/thumber/images/ev/beylikduzu/1.jpg);">
                                     <div class="desc">
                                         <div class="con">
@@ -512,7 +522,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 animate-box" data-animate-effect="fadeInTop">
+                            <div class="col-md-6 animate-box filterDiv ev" data-animate-effect="fadeInTop">
                                 <div class="project" style="background-image: url(gallery_page/thumber/images/ev/maltepevilla/kat1/kat1.2.jpg);">
                                     <div class="desc">
                                         <div class="con">
@@ -530,7 +540,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 animate-box" data-animate-effect="fadeInBottom">
+                            <div class="col-md-6 animate-box filterDiv ofis" data-animate-effect="fadeInBottom">
                                 <div class="project" style="background-image: url(gallery_page/thumber/images/ofis/eyfel/sunum1.jpg);">
                                     <div class="desc">
                                         <div class="con">
@@ -548,7 +558,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+                            <div class="col-md-6 animate-box filterDiv ofis" data-animate-effect="fadeInBottom">
                                 <div class="project" style="background-image: url(gallery_page/thumber/images/ofis/inangroup/4.jpg);">
                                     <div class="desc">
                                         <div class="con">
@@ -566,7 +576,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
+                            <div class="col-md-6 animate-box filterDiv otel" data-animate-effect="fadeInRight">
                                 <div class="project" style="background-image: url(gallery_page/thumber/images/otel/azerbaycan/1.jpg);">
                                     <div class="desc">
                                         <div class="con">
@@ -746,6 +756,51 @@
     <script src="js/owl.carousel.min.js"></script>
     <!-- Counters -->
     <script src="js/jquery.countTo.js"></script>
+
+    <script>
+                filterSelection("all")
+        function filterSelection(c) {
+        var x, i;
+        x = document.getElementsByClassName("filterDiv");
+        if (c == "all") c = "";
+        for (i = 0; i < x.length; i++) {
+            w3RemoveClass(x[i], "show");
+            if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+        }
+        }
+
+        function w3AddClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+        }
+        }
+
+        function w3RemoveClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            while (arr1.indexOf(arr2[i]) > -1) {
+            arr1.splice(arr1.indexOf(arr2[i]), 1);     
+            }
+        }
+        element.className = arr1.join(" ");
+        }
+
+        // Add active class to the current button (highlight it)
+        var btnContainer = document.getElementById("myBtnContainer");
+        var btns = btnContainer.getElementsByClassName("btn");
+        for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function(){
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+        }
+    </script>
 
 
     <!-- MAIN JS -->
