@@ -61,6 +61,9 @@
         .show {
             display: block;
         }
+	.pointer {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -472,11 +475,11 @@
                         <div class="row row-bottom-padded-sm animate-box" data-animate-effect="fadeInLeft">
                                 <div class="col-md-12" id="myBtnContainer">
                                 <p class="work-menu">
-                                    <span><a onclick="filterSelection('all')" class="active">Hepsi</a></span>
-                                    <span onclick="filterSelection('cafe')"><a>Cafe&Restaurant</a></span> 
-                                    <span onclick="filterSelection('ofis')"><a>Ofis</a></span> 
-                                    <span onclick="filterSelection('ev')"><a>Ev</a></span> 
-                                    <span onclick="filterSelection('otel')"><a>Otel</a></span>
+                                    <span class="pointer"><a onclick="filterSelection('all')" class="active">Hepsi</a></span>
+                                    <span class="pointer" onclick="filterSelection('cafe')"><a>Cafe&Restaurant</a></span> 
+                                    <span class="pointer" onclick="filterSelection('ofis')"><a>Ofis</a></span> 
+                                    <span class="pointer" onclick="filterSelection('ev')"><a>Ev</a></span> 
+                                    <span class="pointer" onclick="filterSelection('otel')"><a>Otel</a></span>
                                 </p>
                             </div>
                             
